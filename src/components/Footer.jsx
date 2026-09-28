@@ -14,34 +14,32 @@ const Footer = () => {
       position: 'relative'
     }}>
       <div className="container">
-        <div style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '1.25rem'
-        }}>
+        <div
+          className="footer-content"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+            width: '100%',
+            minHeight: '42px'
+          }}
+        >
           {/* Copyright */}
           <div style={{
             fontSize: '0.9rem',
             color: 'var(--text-muted)',
-            fontWeight: '500'
+            fontWeight: '500',
+            textAlign: 'center'
           }}>
             © {new Date().getFullYear()} Chhoeun Sreynich. All rights reserved.
-          </div>
-
-          {/* Credits */}
-          <div style={{
-            fontSize: '0.88rem',
-            color: 'var(--text-muted)'
-          }}>
-            Designed & Built with React.js & White & Purple Aesthetics
           </div>
 
           {/* Scroll to Top */}
           <button
             onClick={scrollToTop}
             aria-label="Scroll to top"
+            className="footer-scroll-top"
             style={{
               width: '42px',
               height: '42px',

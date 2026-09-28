@@ -1,51 +1,45 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Code, Database, Terminal, Wrench, Users, Languages, Check, Sparkles } from 'lucide-react';
+import { Code, Database, Terminal, Wrench, Sparkles } from 'lucide-react';
+import { TechIcon } from './TechIcons';
 
 const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const categories = [
-    { id: 'all', label: 'All Skills', icon: <Sparkles size={16} /> },
-    { id: 'frontend', label: 'Front-End', icon: <Code size={16} /> },
-    { id: 'backend', label: 'Back-End & DB', icon: <Database size={16} /> },
-    { id: 'programming', label: 'Programming', icon: <Terminal size={16} /> },
-    { id: 'tools', label: 'Tools & Design', icon: <Wrench size={16} /> },
-    { id: 'personal', label: 'Personal & Languages', icon: <Users size={16} /> }
+    { id: 'all', label: 'All Skills', icon: <Sparkles size={15} /> },
+    { id: 'frontend', label: 'Front-End', icon: <Code size={15} /> },
+    { id: 'backend', label: 'Back-End & DB', icon: <Database size={15} /> },
+    { id: 'programming', label: 'Programming', icon: <Terminal size={15} /> },
+    { id: 'tools', label: 'Tools & Design', icon: <Wrench size={15} /> }
   ];
 
   const skillItems = [
-    // Front-end
-    { name: 'React.js', category: 'frontend', level: 88, desc: 'Component Architecture, Hooks, State Management' },
-    { name: 'JavaScript (ES6+)', category: 'frontend', level: 85, desc: 'DOM Manipulation, Async/Await, ES Modules' },
-    { name: 'Tailwind CSS', category: 'frontend', level: 90, desc: 'Utility-First Styling, Responsive Layouts' },
-    { name: 'Bootstrap', category: 'frontend', level: 92, desc: 'Grid System, Components, Modern Themes' },
-    { name: 'HTML5', category: 'frontend', level: 95, desc: 'Semantic Structure, Accessibility, SEO' },
-    { name: 'CSS3', category: 'frontend', level: 92, desc: 'Flexbox, CSS Grid, Animations, Glassmorphism' },
+    // Top 9 skills matching requested 3x3 layout (HTML, React.js, Node.js / CSS, Next.js, Tailwind CSS / JavaScript, Python, Git)
+    { name: 'HTML', category: 'frontend', level: 95, icon: 'html' },
+    { name: 'React.js', category: 'frontend', level: 85, icon: 'react' },
+    { name: 'Node.js', category: 'backend', level: 80, icon: 'node' },
+    { name: 'CSS', category: 'frontend', level: 90, icon: 'css' },
+    { name: 'Next.js', category: 'frontend', level: 80, icon: 'next' },
+    { name: 'Tailwind CSS', category: 'frontend', level: 90, icon: 'tailwind' },
+    { name: 'JavaScript', category: 'frontend', level: 90, icon: 'javascript' },
+    { name: 'Python', category: 'programming', level: 85, icon: 'python' },
+    { name: 'Git', category: 'tools', level: 85, icon: 'git' },
 
-    // Back-end & Database
-    { name: 'Laravel', category: 'backend', level: 82, desc: 'MVC Architecture, Eloquent ORM, Blade, Routing' },
-    { name: 'PHP', category: 'backend', level: 85, desc: 'OOP, Server Scripts, Session Management' },
-    { name: 'SQL Server', category: 'backend', level: 84, desc: 'Database Architecture, ER Diagrams, Stored Procedures' },
-    { name: 'MySQL', category: 'backend', level: 86, desc: 'Relational Schema, Query Optimization, Joins' },
+    // Additional Backend & Database
+    { name: 'PHP', category: 'backend', level: 85, icon: 'php' },
+    { name: 'Laravel', category: 'backend', level: 85, icon: 'laravel' },
+    { name: 'MySQL', category: 'backend', level: 85, icon: 'mysql' },
+    { name: 'SQL Server', category: 'backend', level: 84, icon: 'sql server' },
+    { name: 'REST APIs', category: 'tools', level: 86, icon: 'api' },
 
     // Programming
-    { name: 'C#', category: 'programming', level: 80, desc: 'Object-Oriented Logic, .NET Basics' },
-    { name: 'C++', category: 'programming', level: 82, desc: 'Data Structures, Memory Management' },
-    { name: 'C Language', category: 'programming', level: 85, desc: 'Procedural Programming, Logic & Algorithms' },
+    { name: 'C#', category: 'programming', level: 80, icon: 'c#' },
+    { name: 'C++', category: 'programming', level: 82, icon: 'c++' },
+    { name: 'C Language', category: 'programming', level: 85, icon: 'c' },
 
-    // Tools & Workflows
-    { name: 'Figma', category: 'tools', level: 88, desc: 'UI/UX Wireframes, High-Fidelity Design Mockups' },
-    { name: 'Git & GitHub', category: 'tools', level: 85, desc: 'Version Control, Branching, Repositories' },
-    { name: 'REST APIs', category: 'tools', level: 86, desc: 'API Integration, JSON Data Fetching, Axios/Fetch' },
-
-    // Personal & Languages
-    { name: 'Good Communication', category: 'personal', level: 95, desc: 'Clear verbal and written collaboration' },
-    { name: 'Problem Solving', category: 'personal', level: 90, desc: 'Logical debugging and algorithmic solutions' },
-    { name: 'Teamwork & Adaptability', category: 'personal', level: 94, desc: 'Collaborative spirit and fast adjustment' },
-    { name: 'Microsoft Office', category: 'personal', level: 90, desc: 'Word, Excel, PowerPoint documentation' },
-    { name: 'Khmer Language', category: 'personal', level: 100, desc: 'Native speaker (Speaking, Reading, Writing)' },
-    { name: 'English Language', category: 'personal', level: 80, desc: 'Medium proficiency (BELTEI 1-Year Intensive Course)' },
+    // Tools & Design
+    { name: 'Figma', category: 'tools', level: 88, icon: 'figma' }
   ];
 
   const filteredSkills = activeCategory === 'all'
@@ -53,106 +47,156 @@ const Skills = () => {
     : skillItems.filter(s => s.category === activeCategory);
 
   return (
-    <section id="skills" style={{ padding: '6rem 0', position: 'relative' }}>
+    <section id="skills" style={{ padding: '6.5rem 0', position: 'relative' }}>
       <div className="container">
 
-        <div className="section-header">
-          <span className="badge-purple">
-            <Code size={16} /> TECHNICAL & PERSONAL SKILLS
-          </span>
-          <h2>My Expertise & Tools</h2>
-          <p>
-            A comprehensive overview of technologies, frameworks, databases, and soft skills I utilize.
+        {/* Section Header matching requested design */}
+        <div style={{ textAlign: 'center', marginBottom: '2.75rem' }}>
+          <p style={{
+            fontSize: '0.85rem',
+            fontWeight: '700',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'var(--text-purple, #A78BFA)',
+            marginBottom: '0.5rem'
+          }}>
+            MY SKILLS
           </p>
+          <h2 style={{
+            fontSize: '2.35rem',
+            fontWeight: '700',
+            color: 'var(--text-primary)',
+            letterSpacing: '-0.02em',
+            marginBottom: '0.85rem'
+          }}>
+            Technologies
+          </h2>
+          {/* Purple accent line underneath heading */}
+          <div style={{
+            width: '44px',
+            height: '3.5px',
+            background: 'linear-gradient(90deg, #7C3AED, #A855F7)',
+            borderRadius: '999px',
+            margin: '0 auto'
+          }} />
         </div>
 
-        {/* Category Tabs */}
+        {/* Category Filter Tabs */}
         <div style={{
           display: 'flex',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          gap: '0.75rem',
-          marginBottom: '3rem'
+          gap: '0.65rem',
+          marginBottom: '3.5rem'
         }}>
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                padding: '0.65rem 1.25rem',
-                borderRadius: '999px',
-                fontSize: '0.92rem',
-                fontWeight: '600',
-                transition: 'all 0.25s ease',
-                background: activeCategory === cat.id ? 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' : '#FFFFFF',
-                color: activeCategory === cat.id ? '#FFFFFF' : '#475569',
-                border: activeCategory === cat.id ? '1px solid #7C3AED' : '1px solid var(--border-medium)',
-                boxShadow: activeCategory === cat.id ? '0 8px 20px -4px rgba(124, 58, 237, 0.4)' : 'var(--shadow-sm)'
-              }}
-            >
-              {cat.icon} {cat.label}
-            </button>
-          ))}
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.45rem',
+                  padding: '0.5rem 1.15rem',
+                  borderRadius: '999px',
+                  fontSize: '0.88rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                  background: isActive
+                    ? 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)'
+                    : 'var(--tab-inactive-bg, rgba(124, 58, 237, 0.05))',
+                  color: isActive ? '#FFFFFF' : 'var(--text-secondary)',
+                  border: isActive ? '1px solid #7C3AED' : '1px solid var(--border-light)',
+                  boxShadow: isActive ? '0 4px 14px rgba(124, 58, 237, 0.35)' : 'none'
+                }}
+              >
+                {cat.icon} {cat.label}
+              </button>
+            );
+          })}
         </div>
 
-        {/* Skill Cards Grid */}
+        {/* 3-Column Skills Grid */}
         <motion.div
           layout
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1.5rem'
-          }}
-          className="grid-3"
+          className="skills-modern-grid"
         >
-          <AnimatePresence>
-            {filteredSkills.map((skill) => (
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill, index) => (
               <motion.div
                 key={skill.name}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="glass-card"
-                style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.35, delay: index * 0.02 }}
+                className="skill-modern-item"
               >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.6rem' }}>
-                    <h4 style={{ fontSize: '1.15rem', color: '#1E1B4B' }}>{skill.name}</h4>
-                    <span style={{ fontSize: '0.82rem', fontWeight: '700', color: '#7C3AED', background: 'var(--purple-50)', padding: '0.2rem 0.6rem', borderRadius: '6px' }}>
-                      {skill.level}%
+                {/* Skill Name & Percentage Row */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '0.75rem'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.85rem'
+                  }}>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: '26px',
+                      height: '26px',
+                      flexShrink: 0
+                    }}>
+                      <TechIcon name={skill.icon || skill.name} size={26} />
+                    </div>
+                    <span style={{
+                      fontSize: '1.05rem',
+                      fontWeight: '600',
+                      color: 'var(--text-primary)',
+                      letterSpacing: '-0.01em'
+                    }}>
+                      {skill.name}
                     </span>
                   </div>
 
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', marginBottom: '1.2rem', lineHeight: 1.5 }}>
-                    {skill.desc}
-                  </p>
+                  <span style={{
+                    fontSize: '0.92rem',
+                    fontWeight: '600',
+                    color: 'var(--text-muted)'
+                  }}>
+                    {skill.level}%
+                  </span>
                 </div>
 
-                {/* Progress bar */}
-                <div>
-                  <div style={{
-                    width: '100%',
-                    height: '7px',
-                    background: 'var(--purple-100)',
-                    borderRadius: '999px',
-                    overflow: 'hidden'
-                  }}>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: `${skill.level}%` }}
-                      transition={{ duration: 0.8, ease: 'easeOut' }}
-                      style={{
-                        height: '100%',
-                        background: 'linear-gradient(90deg, #7C3AED, #A78BFA)',
-                        borderRadius: '999px'
-                      }}
-                    />
-                  </div>
+                {/* Progress Bar Track */}
+                <div style={{
+                  width: '100%',
+                  height: '7px',
+                  backgroundColor: 'var(--skill-track-bg, rgba(255, 255, 255, 0.08))',
+                  borderRadius: '999px',
+                  overflow: 'hidden',
+                  position: 'relative'
+                }}>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: 'easeOut', delay: index * 0.03 }}
+                    style={{
+                      height: '100%',
+                      borderRadius: '999px',
+                      background: 'linear-gradient(90deg, #6366F1 0%, #7C3AED 50%, #A855F7 100%)',
+                      boxShadow: '0 0 10px rgba(124, 58, 237, 0.45)'
+                    }}
+                  />
                 </div>
               </motion.div>
             ))}

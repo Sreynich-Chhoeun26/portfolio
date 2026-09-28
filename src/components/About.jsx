@@ -29,7 +29,7 @@ const About = () => {
   return (
     <section id="about" style={{ padding: '6rem 0', position: 'relative' }}>
       <div className="container">
-        
+
         <div className="section-header">
           <span className="badge-purple">
             <UserCheck size={16} /> PERSONAL PROFILE
@@ -41,7 +41,7 @@ const About = () => {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }} className="about-grid">
-          
+
           {/* Left Bio Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -88,7 +88,7 @@ const About = () => {
                 <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: '600' }}>IT Degree Level</div>
               </div>
               <div>
-                <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#7C3AED', fontFamily: 'var(--font-heading)' }}>5+</div>
+                <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#7C3AED', fontFamily: 'var(--font-heading)' }}>10+</div>
                 <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: '600' }}>Major Projects</div>
               </div>
               <div>

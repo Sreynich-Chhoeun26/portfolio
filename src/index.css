@@ -45,6 +45,9 @@
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --skill-track-bg: rgba(124, 58, 237, 0.12);
+  --tab-inactive-bg: rgba(124, 58, 237, 0.05);
 }
 
 /* Dark Theme Variables - Single Uniform Dark Color */
@@ -71,6 +74,9 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.45);
   --shadow-lg: 0 16px 32px -8px rgba(0, 0, 0, 0.55);
+
+  --skill-track-bg: rgba(255, 255, 255, 0.08);
+  --tab-inactive-bg: rgba(255, 255, 255, 0.05);
 }
 
 [data-theme='dark'] body {
@@ -325,3 +331,62 @@ img {
   z-index: -1;
   pointer-events: none;
 }
+
+/* Footer */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  min-height: 42px;
+}
+
+.footer-scroll-top {
+  position: absolute;
+  right: 0;
+}
+
+@media (max-width: 640px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .footer-scroll-top {
+    position: static;
+  }
+}
+
+/* Modern Skills Section Layout */
+.skills-modern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3.5rem;
+  row-gap: 2.25rem;
+}
+
+.skill-modern-item {
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+.skill-modern-item:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+  .skills-modern-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.5rem;
+    row-gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-modern-grid {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 1.75rem;
+  }
+}
+
+
