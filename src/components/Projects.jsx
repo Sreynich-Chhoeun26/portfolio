@@ -71,22 +71,6 @@ const Projects = () => {
         'Wrote complex SQL queries, JOIN operations, and transactional procedures for check-ins/check-outs.',
         'Ensured database security, foreign key constraints, and indexing for optimal query performance.'
       ]
-    },
-    {
-      id: 5,
-      title: 'Web Design Templates',
-      category: 'Front-End Development',
-      filter: 'frontend',
-      description: 'Suite of custom website layout templates including dashboards, registration forms, responsive tables, sample pages, and smooth CSS keyframe animations.',
-      fullDescription: 'Created a library of reusable Web Design templates showcasing interactive UI components, micro-animations, glassmorphic cards, and clean standard code structure.',
-      tech: ['HTML5', 'CSS3', 'JavaScript', 'Custom Animations', 'Responsive Layouts'],
-      image: null,
-      highlights: [
-        'Designed responsive admin dashboard pages with sidebar navigation.',
-        'Crafted custom keyframe CSS animations for modal entrances and button hovers.',
-        'Built mobile-friendly pricing cards, form inputs with inline validation, and sample landing pages.',
-        'Tested cross-browser compatibility across Chrome, Edge, Firefox, and mobile devices.'
-      ]
     }
   ];
 

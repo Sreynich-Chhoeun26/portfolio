@@ -7,7 +7,7 @@ const Hero = () => {
     <section id="home" className="hero-section">
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid">
-          
+
           {/* Left Column: Information */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -28,7 +28,7 @@ const Hero = () => {
 
             {/* Description */}
             <p className="hero-description">
-              Hi, I'm CHHOEUN Sreynich, a <span className="highlight-purple">dedicated</span> Frontend Developer from Phnom Penh, Cambodia.
+              Hi, I'm CHHOEUN Sreynich, a <span className="">dedicated</span> Frontend Developer from Phnom Penh, Cambodia.
             </p>
 
             {/* Tagline */}

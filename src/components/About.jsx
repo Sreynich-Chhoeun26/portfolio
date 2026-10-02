@@ -72,7 +72,7 @@ const About = () => {
             </p>
 
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.8rem' }}>
-              As a motivated and responsible developer, I thrive both in independent problem-solving and in cross-functional team environments. I am eager to apply my technical capabilities in PHP, Laravel, React.js, and SQL to real-world industrial projects.
+              As a motivated and responsible developer, I thrive both in independent problem-solving and in cross-functional team environments. I am eager to apply my software engineering skills and technical expertise to real-world industrial projects
             </p>
 
             <div style={{

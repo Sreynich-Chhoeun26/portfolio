@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon } from 'lucide-react';
 
+// Aquarius (♒) Brand Icon Component
+const AquariusIcon = ({ size = 20, color = 'currentColor' }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke={color}
+    strokeWidth="2.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    style={{ display: 'block' }}
+  >
+    <path d="M3.5 10L6.5 7L9.5 10L12.5 7L15.5 10L18.5 7L21.5 10" />
+    <path d="M3.5 17L6.5 14L9.5 17L12.5 14L15.5 17L18.5 14L21.5 17" />
+  </svg>
+);
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -89,20 +108,49 @@ const Navbar = () => {
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         
-        {/* Brand Name: Clean "Sreynich" Text */}
+        {/* Brand Name with Aquarius (♒) Brand Icon */}
         <a
           href="#home"
+          className="brand-logo"
+          aria-label="Aquarius (♒) Sreynich Portfolio"
+          title="Aquarius (♒) - Sreynich"
           style={{
-            fontSize: '1.35rem',
-            fontWeight: '700',
-            fontFamily: 'var(--font-heading)',
-            color: isDark ? '#FFFFFF' : '#1E1B4B',
-            textDecoration: 'none',
-            letterSpacing: '-0.015em',
-            transition: 'color 0.25s ease'
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.65rem',
+            textDecoration: 'none'
           }}
         >
-          Sreynich
+          <span
+            className="brand-icon-box"
+            style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #7C3AED 0%, #A855F7 100%)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#FFFFFF',
+              boxShadow: '0 4px 14px rgba(124, 58, 237, 0.32)',
+              transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+              flexShrink: 0
+            }}
+          >
+            <AquariusIcon size={19} color="#FFFFFF" />
+          </span>
+          <span
+            style={{
+              fontSize: '1.35rem',
+              fontWeight: '700',
+              fontFamily: 'var(--font-heading)',
+              color: isDark ? '#FFFFFF' : '#1E1B4B',
+              letterSpacing: '-0.015em',
+              transition: 'color 0.25s ease'
+            }}
+          >
+            Sreynich
+          </span>
         </a>
 
         {/* Desktop Nav Items + Moon Icon */}
@@ -262,6 +310,10 @@ const Navbar = () => {
       )}
 
       <style>{`
+        .brand-logo:hover .brand-icon-box {
+          transform: translateY(-2px) scale(1.06);
+          box-shadow: 0 6px 20px rgba(124, 58, 237, 0.48) !important;
+        }
         @media (min-width: 850px) {
           .desktop-nav { display: flex !important; }
           .mobile-controls { display: none !important; }
